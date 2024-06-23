@@ -14,7 +14,7 @@ const navItems = [
 
 const Navbar = () => {
   const navbarBase =
-    "md:flex gap-5 items-end decoration-none transition-all ease-in-out ";
+    "md:flex gap-5 items-end decoration-none transition ease-in-out ";
   const openedNavbar = `flex flex-col items-center absolute left-0 top-0 gap-9 py-10 w-full bg-white text-2xl`;
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
@@ -40,7 +40,6 @@ const Navbar = () => {
             { hidden: !isOpen, block: isOpen }
           )}
         >
-          {/* TODO: underline if is active */}
           {navItems.map((item, index) => (
             <li
               key={index}

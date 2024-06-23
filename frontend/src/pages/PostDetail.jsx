@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { getDate, getReadingTime } from "../utils/PostUtils";
-
+import Header from "../components/Header";
 const PostDetail = () => {
   const { postId } = useParams();
   const [post, setPost] = useState({});
@@ -35,7 +35,26 @@ const PostDetail = () => {
       });
   }, []);
 
-  return <div>{postId}</div>;
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+  return (
+    <div className="flex justify-center items-center ">
+      <div className="container pt-12">
+        <p
+          onClick={handleGoBack}
+          className="pb-3 cursor-pointer"
+        >{` Go back`}</p>
+        <Header text={post.title} />
+        <div className="pb-5">{post.shortDescription}</div>
+        <div>{post.content}</div>
+
+        <div className="italic pt-6">
+          {post.author} - {post.publishedAt}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default PostDetail;

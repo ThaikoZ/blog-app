@@ -23,15 +23,3 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-
-.navbar {
-  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-}
-
-.navbar.open {
-  max-height: 500px; /* Adjust this value based on your content height */
-  opacity: 1;
-}

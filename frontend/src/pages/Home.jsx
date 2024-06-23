@@ -36,7 +36,7 @@ function Home() {
   return (
     <div className="grid grid-cols-8 gap-4 w-full justify-between p-7 mt-5">
       <div className="col-span-8 xl:col-span-6">
-        <Header />
+        <Header text="Best of the week" subtitle={"See all posts ->"} />
       </div>
       <div className="flex flex-col col-span-8 gap-4">
         {posts.length > 0 ? (
