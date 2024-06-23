@@ -24,7 +24,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    setIsOpen(false); // Close the menu when navigating to another page
+    setIsOpen(false);
   }, [location]);
 
   return (
@@ -42,7 +42,12 @@ const Navbar = () => {
         >
           {/* TODO: underline if is active */}
           {navItems.map((item, index) => (
-            <li key={index} className="cursor-pointer hover:underline">
+            <li
+              key={index}
+              className={classNames("cursor-pointer hover:underline", {
+                underline: location.pathname.includes(item.href),
+              })}
+            >
               <Link to={item.href}>{item.title}</Link>
             </li>
           ))}
@@ -52,7 +57,6 @@ const Navbar = () => {
         <Button filled circled>
           {<CiSearch className="w-6 h-6" />}
         </Button>
-        {/* TODO: rollup navbar after click */}
         <div
           className="border-[#242424] rounded-3xl py-2 px-4 transition-colors cursor-pointer text-center h-11 flex items-center border-2 hover:bg-[#242424] bg-white hover:text-white "
           onClick={toggleMenu}
