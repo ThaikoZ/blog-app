@@ -10,3 +10,10 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
+class Tag(models.Model):
+    title = models.CharField(max_length=255)
+
+class PostTag(models.Model):
+    tag = models.ForeignKey(Tag, on_delete=models.DO_NOTHING)
+    post = models.ForeignKey(Post, on_delete=models.DO_NOTHING)
