@@ -17,7 +17,7 @@ function Home() {
           const newPosts = response.data.map((post) => {
             return {
               id: post.id,
-              tags: ["gowno", "rowno"],
+              tags: post.tags,
               title: post.title,
               publishedAt: getDate(post.created_at),
               author: post.author,

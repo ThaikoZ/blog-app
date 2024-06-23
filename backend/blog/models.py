@@ -17,5 +17,5 @@ class Tag(models.Model):
         return self.title
     
 class PostTag(models.Model):
-    tag = models.ForeignKey(Tag, on_delete=models.DO_NOTHING)
-    post = models.ForeignKey(Post, on_delete=models.DO_NOTHING, related_name='tags')
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='tags')
