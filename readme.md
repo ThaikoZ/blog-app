@@ -1,4 +1,3 @@
-# BLOG APP README
 
 ## Description
 
