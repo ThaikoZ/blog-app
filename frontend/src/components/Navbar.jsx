@@ -1,35 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./Button";
 import { CiSearch } from "react-icons/ci";
+import { Link, useLocation } from "react-router-dom";
+import classNames from "classnames";
 
 const navItems = [
-  { title: "Articles", href: "" },
-  { title: "Radio", href: "" },
-  { title: "Podcast", href: "" },
-  { title: "Be a writter", href: "" },
-  { title: "Talktous", href: "" },
+  { title: "Articles", href: "articles/" },
+  { title: "Radio", href: "radio/" },
+  { title: "Podcast", href: "podcast/" },
+  { title: "Be a writter", href: "beawritter/" },
+  { title: "Talktous", href: "/talktous" },
 ];
 
 const Navbar = () => {
+  const navbarBase =
+    "md:flex gap-5 items-end decoration-none transition-all ease-in-out ";
+  const openedNavbar = `flex flex-col items-center absolute left-0 top-0 gap-9 py-10 w-full bg-white text-2xl`;
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useEffect(() => {
+    setIsOpen(false); // Close the menu when navigating to another page
+  }, [location]);
+
   return (
     <div className="w-full flex items-center justify-between h-18 border-zinc-400 p-7 ">
       <div className="flex gap-10">
-        <div className="flex font-extrabold  text-3xl italic">Blog Spot.</div>
-        <ul className="gap-5 items-end decoration-none hidden md:flex">
+        <div className="flex font-extrabold text-3xl italic z-10">
+          <Link to="/"> Blog Spot.</Link>
+        </div>
+        <ul
+          className={classNames(
+            navbarBase,
+            { [openedNavbar]: isOpen },
+            { hidden: !isOpen, block: isOpen }
+          )}
+        >
           {/* TODO: underline if is active */}
           {navItems.map((item, index) => (
             <li key={index} className="cursor-pointer hover:underline">
-              {item.title}
+              <Link to={item.href}>{item.title}</Link>
             </li>
           ))}
         </ul>
       </div>
-      <div className="flex gap-1 items-center">
+      <div className="flex gap-1 items-center z-20">
         <Button filled circled>
           {<CiSearch className="w-6 h-6" />}
         </Button>
         {/* TODO: rollup navbar after click */}
-        <Button>Menu</Button>
+        <div
+          className="border-[#242424] rounded-3xl py-2 px-4 transition-colors cursor-pointer text-center h-11 flex items-center border-2 hover:bg-[#242424] bg-white hover:text-white "
+          onClick={toggleMenu}
+        >
+          {isOpen ? "Close" : "Menu"}
+        </div>
       </div>
     </div>
   );
