@@ -37,7 +37,7 @@ def tag_detail(request, id):
 @api_view(['GET', 'POST'])
 def post_list(request):
   if request.method == 'GET':
-    queryset = Post.objects.all()
+    queryset = Post.objects.prefetch_related('tags__tag').all()
     posts = PostSerializer(queryset, many=True)
     return Response(posts.data)
   elif request.method == 'POST':
