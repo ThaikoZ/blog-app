@@ -4,6 +4,10 @@
 
 This project is a simple blog site implemented using Django for the backend API and React.js for the frontend user interface. The blog allows users to read posts categorized by tags.
 
+### Project Preview
+
+![Project Preview](./dump/website_preview.jpg)
+
 ## Project Structure
 
 ```
@@ -30,6 +34,10 @@ The backend is developed using Django and provides the following endpoints:
 - `/posts/<id>/`: Retrieves details of a specific post by ID.
 - `/tags/`: Retrieves a list of all tags available.
 - `/tags/<id>/`: Retrieves details of a specific tag by ID.
+
+### Database Models
+
+![Database Models](./dump/db_schema.jpg)
 
 ### Setup Instructions
 
